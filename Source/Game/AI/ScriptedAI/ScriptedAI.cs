@@ -32,6 +32,7 @@ namespace Game.AI
         {
             _isCombatMovementAllowed = true;
             _isHeroic = me.GetMap().IsHeroic();
+            _isMythicDungeon = me.GetMap().IsMythicDungeon();
             _difficulty = me.GetMap().GetSpawnMode();
         }
 
@@ -377,6 +378,7 @@ namespace Game.AI
         // DO NOT USE to check raid in mode 25-normal.
         public bool IsHeroic() { return _isHeroic; }
 
+        public bool IsMythicDungeon() { return _isMythicDungeon; }
         // return the dungeon or raid difficulty
         public Difficulty GetDifficulty() { return _difficulty; }
 
@@ -425,6 +427,7 @@ namespace Game.AI
         Difficulty _difficulty;
         bool _isCombatMovementAllowed;
         bool _isHeroic;
+        bool _isMythicDungeon;
     }
 
     public class BossAI : ScriptedAI

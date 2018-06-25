@@ -3047,6 +3047,11 @@ namespace Game.Maps
             return false;
         }
 
+        public bool IsMythicDungeon()
+        {
+            return i_spawnMode == Difficulty.Mythic || i_spawnMode == Difficulty.MythicKeystone;
+        }
+
         public bool Is25ManRaid()
         {
             // since 25man difficulties are 1 and 3, we can check them like that
