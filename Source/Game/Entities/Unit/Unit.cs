@@ -772,7 +772,24 @@ namespace Game.Entities
 
             return null;
         }
+        public List<Unit> FindNearbyUnits(bool RemoveSelf = false, float dist = SharedConst.NominalMeleeRange)
+        {
+            List<Unit> nearbyAllies = new List<Unit>();
+            var u_check = new AnyFriendlyUnitInObjectRangeCheck(this, this, dist);
+            var searcher = new UnitListSearcher(this, nearbyAllies, u_check);
+            Cell.VisitAllObjects(this, searcher, dist);
 
+            if (RemoveSelf)
+                nearbyAllies.Remove(this);
+            // remove not LoS targets
+            foreach (var unit in nearbyAllies)
+            {
+                if (!IsWithinLOSInMap(unit) || unit.IsTotem() || unit.IsSpiritService() || unit.IsCritter())
+                    nearbyAllies.Remove(unit);
+            }
+
+            return nearbyAllies;
+        }
         public Unit SelectNearbyTarget(Unit exclude = null, float dist = SharedConst.NominalMeleeRange)
         {
             List<Unit> targets = new List<Unit>();

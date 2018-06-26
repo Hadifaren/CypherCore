@@ -1,6 +1,6 @@
 ﻿/*
  * Copyright (C) 2012-2018 CypherCore <http://github.com/CypherCore>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * Based on AshamaneProject <https://github.com/AshamaneProject>
  */
 
@@ -22,9 +22,9 @@ using Game.AI;
 using Game.Entities;
 using Game.Scripting;
 
-namespace Scripts.BrokenIsles.BlackRookHold
+namespace Scripts.BrokenIsles.BlackRookHold.BossAmalgamOfSouls
 {
-    internal struct Spells
+    struct Spells
     {
         public const uint ReapSoul = 194956;
 
@@ -38,11 +38,12 @@ namespace Scripts.BrokenIsles.BlackRookHold
         // Heroic Diff
         public const uint CallSouls = 196078;
         public const uint CallSoulsVisual = 196925;
+
         public const uint SoulGorge = 196930; // need script
         public const uint SoulBurst = 196587;
     }
 
-    internal struct Events // time for events need correction i think
+    struct Events // time for events need correction i think
     {
         public const uint SoulReap = 0; // its bug ... boss dosent cast spell
         public const uint SoulEcho = 1;
@@ -51,19 +52,20 @@ namespace Scripts.BrokenIsles.BlackRookHold
         public const uint SoulBurst = 4;
     }
 
-    internal struct Actions
+    struct Actions
     {
         public const int SoulConsumed = 0;
         public const int SoulKilled = 1;
     }
 
-    internal struct Stages
+    struct Stages
     {
         public const byte AllStages = 0;
         public const byte StageOne = 1;
         public const byte StageTwo = 2;
     }
-    internal struct Texts
+
+    struct Texts
     {
         public const string Aggro = "Consume! Devour!";
         public const string SwirlingScythe = "The harvest has come!";
@@ -72,13 +74,13 @@ namespace Scripts.BrokenIsles.BlackRookHold
         public const string CallSouls = "Ancient souls of the Black Rook, rise and join our chorus!";
         public const string SoulBurst = "This energy... it is too much!";
     }
-    /// Boss ID 98542
+
     [Script]
     class BossAmalgamOfSouls : BossAI
     {
         private uint SoulsCount;
 
-        Position[] SoulPos =
+        private Position[] SoulPos =
         {
             new Position(3269.164f, 7554.257f, 14.54204f, 2.02439f),
             new Position(3282.502f, 7576.961f, 14.95347f, 2.978649f),
@@ -89,7 +91,10 @@ namespace Scripts.BrokenIsles.BlackRookHold
             new Position(3225.972f, 7565.66f, 14.6152f, 0.6193081f),
             new Position(3246.426f, 7552.234f, 14.60733f, 1.341422f)
         };
-        public BossAmalgamOfSouls(Creature creature) : base(creature, EncounterData.AmalgamOfSouls_FirstBoss) { }
+
+        public BossAmalgamOfSouls(Creature creature) : base(creature, EncounterData.AmalgamOfSouls_FirstBoss)
+        {
+        }
 
         public override void Reset()
         {
@@ -136,9 +141,11 @@ namespace Scripts.BrokenIsles.BlackRookHold
                     me.AddAura(Spells.SoulGorge, me);
                     --SoulsCount;
                     break;
+
                 case Actions.SoulKilled:
                     --SoulsCount;
                     break;
+
                 default:
                     break;
             }
@@ -164,7 +171,6 @@ namespace Scripts.BrokenIsles.BlackRookHold
                     _events.ScheduleEvent(Events.CallSouls, 3000, 0, Stages.StageTwo);
                     _events.ScheduleEvent(Events.SoulBurst, 33000, 0, Stages.StageTwo);
                 }
-
             }
             Unit target;
             _events.ExecuteEvents(eventIds =>
@@ -178,18 +184,21 @@ namespace Scripts.BrokenIsles.BlackRookHold
                         _events.Repeat(15000);
                         SetCombatMovement(true);
                         break;
+
                     case Events.SoulEcho:
                         me.Yell(Texts.SoulEcho, Language.Universal);
                         target = SelectTarget(SelectAggroTarget.Random);
                         DoCast(target, Spells.SoulEcho);
-                        _events.Repeat(11000);
+                        _events.Repeat(10000);
                         break;
+
                     case Events.SwirlingScythe:
                         target = SelectTarget(SelectAggroTarget.Farthest);
                         DoCast(target, Spells.SwirlingScythe);
                         me.Yell(Texts.SwirlingScythe, Language.Universal);
-                        _events.Repeat(30000);
+                        _events.Repeat(15000);
                         break;
+
                     case Events.CallSouls:
                         me.Yell(Texts.CallSouls, Language.Universal);
                         DoCastAOE(Spells.CallSoulsVisual);
@@ -197,28 +206,31 @@ namespace Scripts.BrokenIsles.BlackRookHold
                         SoulsCount = 6;
                         for (int i = 0; i <= SoulsCount; ++i)
                         {
-                            me.SummonCreature(NpcEntries.NpcRestlessSoul, SoulPos[i]);
+                            me.SummonCreature(NpcEntries.RestlessSoul, SoulPos[i]);
                         }
                         break;
+
                     case Events.SoulBurst:
                         me.Yell(Texts.SoulBurst, Language.Universal);
                         DoCastAOE(Spells.SoulBurst);
                         me.RemoveAurasDueToSpell(Spells.SoulGorge);
                         break;
+
                     default:
                         break;
                 }
-
             });
 
             DoMeleeAttackIfReady();
         }
     }
-    /// Npc ID 99090
+
     [Script]
     class NpcSoulEcho : ScriptedAI
     {
-        public NpcSoulEcho(Creature creature) : base(creature) { }
+        public NpcSoulEcho(Creature creature) : base(creature)
+        {
+        }
 
         public override void IsSummonedBy(Unit summoner)
         {
@@ -240,19 +252,21 @@ namespace Scripts.BrokenIsles.BlackRookHold
                         me.DespawnOrUnsummon();
                         _events.CancelEvent(1);
                         break;
+
                     default:
                         break;
                 }
             });
         }
     }
-    /// Npc ID 99664
+
     [Script]
     class NpcRestlessSoul : ScriptedAI
     {
         private TempSummon m_TempSummon;
         private Unit m_Summoner;
         private CreatureAI bossAI;
+
         public NpcRestlessSoul(Creature creature) : base(creature)
         {
             m_TempSummon = me.ToTempSummon();
@@ -281,6 +295,7 @@ namespace Scripts.BrokenIsles.BlackRookHold
                 }
             }
         }
+
         public override void JustDied(Unit killer)
         {
             if (m_Summoner.IsAIEnabled)
@@ -290,20 +305,28 @@ namespace Scripts.BrokenIsles.BlackRookHold
             }
         }
     }
+
     [Script]
+
     // AreaTrigger 5167  ID 10000
     class AtSwirlingScythe : AreaTriggerEntityScript
     {
-        public AtSwirlingScythe() : base("AtSwirlingScythe") { }
-
-        class AtSwirlingScytheAI : AreaTriggerAI
+        public AtSwirlingScythe() : base("AtSwirlingScythe")
         {
-            public AtSwirlingScytheAI(AreaTrigger areatrigger) : base(areatrigger) { }
+        }
+
+        private class AtSwirlingScytheAI : AreaTriggerAI
+        {
+            public AtSwirlingScytheAI(AreaTrigger areatrigger) : base(areatrigger)
+            {
+            }
+
             public override void OnRemove()
             {
                 Unit unit = at.GetCaster();
                 unit.Say("Scythe Area Removed Before Trigger...", Language.Universal); // debug
             }
+
             public override void OnUnitEnter(Unit unit)
             {
                 Unit caster = at.GetCaster();
@@ -318,4 +341,3 @@ namespace Scripts.BrokenIsles.BlackRookHold
         }
     }
 }
-

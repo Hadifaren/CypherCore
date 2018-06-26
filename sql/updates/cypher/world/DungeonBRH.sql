@@ -1,12 +1,12 @@
-UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32832, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98366, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98366;
-UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 2, `unit_flags` = 32832, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98370, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98370;
+UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32832, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98366, `mechanic_immune_mask` = 0, `flags_extra` = 0, `scriptname`='NpcGhostlyRetainer', `VerifiedBuild` = 26124 WHERE `entry` = 98366;
+UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 2, `unit_flags` = 32832, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98370, `mechanic_immune_mask` = 0, `flags_extra` = 0, `scriptname`='NpcGhostlyCouncilor', `VerifiedBuild` = 26124 WHERE `entry` = 98370;
 UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 190, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32768, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 0, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98362;
-UPDATE `creature_template` SET `minlevel` = 111, `maxlevel` = 111, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32832, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98368, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98368;
-UPDATE `creature_template` SET `minlevel` = 111, `maxlevel` = 111, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 1500, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32768, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98538, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98538;
+UPDATE `creature_template` SET `minlevel` = 111, `maxlevel` = 111, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32832, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98368, `mechanic_immune_mask` = 0, `flags_extra` = 0, `scriptname`='NpcGhostlyProtector', `VerifiedBuild` = 26124 WHERE `entry` = 98368;
+UPDATE `creature_template` SET `minlevel` = 111, `maxlevel` = 111, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 1500, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32768, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98538, `mechanic_immune_mask` = 0, `flags_extra` = 0, `scriptname`='NpcLadyVelandres', `VerifiedBuild` = 26124 WHERE `entry` = 98538;
 UPDATE `creature_template` SET `minlevel` = 111, `maxlevel` = 111, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 33555200, `unit_flags2` = 4196352, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 0, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 100759;
 UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32832, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98792, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98792;
 UPDATE `creature_template` SET `minlevel` = 1,   `maxlevel` = 1,   `faction` = 35, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 33555200, `unit_flags2` = 2048, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 0, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 103662;
-UPDATE `creature_template` SET `minlevel` = 111, `maxlevel` = 111, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32768, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98521, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98521;
+UPDATE `creature_template` SET `minlevel` = 111, `maxlevel` = 111, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32768, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98521, `mechanic_immune_mask` = 0, `flags_extra` = 0, `scriptname`='NpcLordEtheldrin', `VerifiedBuild` = 26124 WHERE `entry` = 98521;
 UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32768, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98813, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98813;
 UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32768, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98677, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98677;
 UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 16, `dmgschool` = 0, `BaseAttackTime` = 2000, `RangeAttackTime` = 2000, `unit_class` = 1, `unit_flags` = 32832, `unit_flags2` = 2099200, `unit_flags3` = 0, `dynamicflags` = 0, `lootid` = 98810, `mechanic_immune_mask` = 0, `flags_extra` = 0, `VerifiedBuild` = 26124 WHERE `entry` = 98810;
@@ -34,8 +34,9 @@ UPDATE `creature_template` SET `minlevel` = 110, `maxlevel` = 110, `faction` = 1
 UPDATE `creature_template` SET `mechanic_immune_mask`= 617299839, `flags_extra`= 268435456, `minlevel`=112, `maxlevel`=112, `faction`=16, `BaseAttackTime`=1500, `RangeAttackTime`=2000, `unit_flags`=32768, `unit_flags2`=2099200, `scriptname`="BossAmalgamOfSouls" WHERE entry=98542;
 UPDATE `creature_template` SET `type_flags`=2097224, `type_flags2`=128, `InhabitType`=4, `scriptname`="NpcSoulEcho" WHERE entry=99090;
 UPDATE `creature_template` SET `minlevel` = 112 , `maxlevel` = 112 , `faction` = 16 , `scriptname` = "NpcRestlessSoul" WHERE `entry` = 99664;
-SET @GUID = xx;
-INSERT INTO mytable(guid,id,map,zoneId,areaId,spawnMask,phaseUseFlags,PhaseId,PhaseGroup,terrainSwapMap,modelid,equipment_id,position_x,position_y,position_z,orientation,spawntimesecs,spawndist,currentwaypoint,curhealth,curmana,MovementType,npcflag,unit_flags,unit_flags2,unit_flags3,dynamicflags,ScriptName,VerifiedBuild) VALUES
+
+SET @GUID = 10000000;
+INSERT INTO `creature`(guid,id,map,zoneId,areaId,spawnMask,phaseUseFlags,PhaseId,PhaseGroup,terrainSwapMap,modelid,equipment_id,position_x,position_y,position_z,orientation,spawntimesecs,spawndist,currentwaypoint,curhealth,curmana,MovementType,npcflag,unit_flags,unit_flags2,unit_flags3,dynamicflags,ScriptName,VerifiedBuild) VALUES
  (@GUID+0,98366,1501,7805,7805,8388870,0,0,0,-1,0,0,3440.29,7610.64,-7.84312,3.40626,7200,0,0,0,0,0,0,0,0,0,0,"",26124)
 ,(@GUID+1,98370,1501,7805,7805,8388870,0,0,0,-1,0,0,3395.86,7689.06,-13.3073,0.852669,7200,0,0,0,0,0,0,0,0,0,0,"",26124)
 ,(@GUID+2,98362,1501,7805,7805,8388870,0,0,0,-1,0,0,3347.6,7721.02,10.1237,5.16394,7200,10,0,0,0,1,0,0,0,0,0,"",26124)
@@ -266,9 +267,13 @@ INSERT INTO `spell_areatrigger_splines` VALUES
 (5167, 0, 0,  0,  0, 0),
 (5167, 1, 20, 0, 0, 0);
 
-UPDATE instance_template SET parent = 1220, script = "InstanceBlackRookHold" WHERE map = 1501;
+UPDATE instance_template SET parent = 1220, script = 'InstanceBlackRookHold' WHERE map = 1501;
 
 INSERT INTO `game_tele`(`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES 
 (1584,3481.333, 7647.139, -9.528318, 3.554499, 1501, 'BRH');
 
 .go xyz 3481.333 7647.139 -9.528318 1501 3.554499
+
+INSERT INTO `spell_script_names`(`spell_id`, `ScriptName`) VALUES
+(225573, 'SpellDarkMending'),
+(200105, 'SpellSacrificeSoul');
