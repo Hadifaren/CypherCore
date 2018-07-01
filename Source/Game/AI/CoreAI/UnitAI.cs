@@ -169,6 +169,11 @@ namespace Game.AI
                 {
                     return targetList.SelectRandom();
                 }
+                case SelectAggroTarget.NonTank:
+                {
+                    targetList.Remove(targetList.First());
+                    return targetList.SelectRandom();
+                }
                 default:
                     break;
             }
@@ -398,7 +403,8 @@ namespace Game.AI
         TopAggro,                                 //Selects targes from top aggro to bottom
         BottomAggro,                              //Selects targets from bottom aggro to top
         Nearest,
-        Farthest
+        Farthest,
+        NonTank
     }
 
     public interface ISelector

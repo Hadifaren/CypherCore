@@ -1845,6 +1845,7 @@ namespace Game
             creature.FlagsExtra = (CreatureFlagsExtra)fields.Read<uint>(77);
             creature.ScriptID = GetScriptId(fields.Read<string>(78));
 
+            creatureTemplateStorage.Remove(entry);
             creatureTemplateStorage.Add(entry, creature);
         }
         public void LoadCreatureTemplateAddons()

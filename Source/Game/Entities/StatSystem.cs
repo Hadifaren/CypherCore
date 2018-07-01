@@ -395,7 +395,7 @@ namespace Game.Entities
                     pet.SetGroupUpdateFlag(GroupUpdatePetFlags.MaxHp);
             }
 
-            if (val < health)
+            if (val > health)
                 SetHealth(val);
         }
         public void SetFullHealth() { SetHealth(GetMaxHealth()); }
