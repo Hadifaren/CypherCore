@@ -60,9 +60,9 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossAmalgamOfSouls
 
     struct Stages
     {
-        public const byte AllStages = 0;
-        public const byte StageOne = 1;
-        public const byte StageTwo = 2;
+        public const byte All = 0;
+        public const byte One = 1;
+        public const byte Two = 2;
     }
 
     struct Texts
@@ -105,10 +105,10 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossAmalgamOfSouls
 
         public void ScheduleEvents()
         {
-            _events.SetPhase(Stages.StageOne);
-            _events.ScheduleEvent(Events.SoulReap, 20000, 0, Stages.AllStages);
-            _events.ScheduleEvent(Events.SoulEcho, 10000, 0, Stages.AllStages);
-            _events.ScheduleEvent(Events.SwirlingScythe, 15000, 0, Stages.AllStages);
+            _events.SetPhase(Stages.One);
+            _events.ScheduleEvent(Events.SoulReap, 20000, 0, Stages.All);
+            _events.ScheduleEvent(Events.SoulEcho, 10000, 0, Stages.All);
+            _events.ScheduleEvent(Events.SwirlingScythe, 15000, 0, Stages.All);
         }
 
         public override void EnterCombat(Unit who)
@@ -123,14 +123,7 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossAmalgamOfSouls
         {
             base.JustDied(killer);
             me.RemoveAurasDueToSpell(Spells.CallSoulsVisual);
-            me.Say("...ahhh", Language.Universal); // test
             instance.SetBossState(EncounterData.AmalgamOfSouls_FirstBoss, EncounterState.Done);
-        }
-
-        public override void KilledUnit(Unit victim)
-        {
-            if (victim.GetTypeId() == TypeId.Player)
-                me.Say("hahaha...", Language.Universal); // test
         }
 
         public override void DoAction(int param)
@@ -162,14 +155,14 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossAmalgamOfSouls
 
             if (me.HasUnitState(UnitState.Casting))
                 return;
-            if (_events.IsInPhase(Stages.StageOne) && HealthBelowPct(51))
+            if (_events.IsInPhase(Stages.One) && HealthBelowPct(51))
             {
                 if (IsHeroic() || IsMythicDungeon())
                 {
-                    _events.SetPhase(Stages.StageTwo);
+                    _events.SetPhase(Stages.Two);
                     _events.DelayEvents(33000);
-                    _events.ScheduleEvent(Events.CallSouls, 3000, 0, Stages.StageTwo);
-                    _events.ScheduleEvent(Events.SoulBurst, 33000, 0, Stages.StageTwo);
+                    _events.ScheduleEvent(Events.CallSouls, 3000, 0, Stages.Two);
+                    _events.ScheduleEvent(Events.SoulBurst, 33000, 0, Stages.Two);
                 }
             }
             Unit target;
@@ -179,10 +172,8 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossAmalgamOfSouls
                 {
                     case Events.SoulReap:
                         me.Yell(Texts.ReapSoul, Language.Universal);
-                        SetCombatMovement(false);
                         me.CastSpell(me.GetVictim(), Spells.ReapSoul);
-                        _events.Repeat(15000);
-                        SetCombatMovement(true);
+                        _events.RescheduleEvent(Events.SoulReap, 15000, 0 , Stages.All);
                         break;
 
                     case Events.SoulEcho:

@@ -317,7 +317,7 @@ namespace Framework.Dynamic
         /// Cancel events belonging to specified group.
         /// </summary>
         /// <param name="group">Group to cancel.</param>
-        void CancelEventGroup(uint group)
+        public void CancelEventGroup(uint group)
         {
             if (group == 0 || group > 8 || Empty())
                 return;

@@ -28,7 +28,7 @@ namespace Scripts.BrokenIsles.BlackRookHold
     struct EncounterData
     {
         public const uint AmalgamOfSouls_FirstBoss = 0;
-        public const uint SecondBoss = 1;
+        public const uint IllysannaRavencrest_SecondBoss = 1;
         public const uint ThirdBoss = 2;
         public const uint ForthBoss = 3;
 
@@ -57,7 +57,8 @@ namespace Scripts.BrokenIsles.BlackRookHold
         public const uint SoulTornChampion = 98243;
         public const uint CommanderShemdah = 98706;
         public const uint IllysannaRavencrest = 98696;
-
+        public const uint SoulTornVanguardBoss = 100485;
+        public const uint RisenArcanistBoss = 100486;
         // Boss Smashspite the Hateful
         public const uint WrathguardBladelord = 98810;
         public const uint WyrmtongueScavenger = 98792;
