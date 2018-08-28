@@ -80,6 +80,8 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossIllysannaRavencrest
         private Position centerPos = new Position(3086.38f, 7295.11f, 103.53f);
         public BossIllysannaRavencrest(Creature creature) : base(creature, EncounterData.IllysannaRavencrest_SecondBoss)
         {
+            me.SetPowerType(PowerType.Energy);
+            me.SetPower(PowerType.Energy, 100);
         }
 
         public override void Reset()
@@ -92,6 +94,7 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossIllysannaRavencrest
         {
             if (first == false)
                 _events.CancelEventGroup(2);
+
             _events.SetPhase(Stages.Vengeance);
             _events.ScheduleEvent(Events.BrutalGlaive, 12000, 1, Stages.Vengeance);
             _events.ScheduleEvent(Events.DarkRush,RandomHelper.URand(10000,20000), 1, Stages.Vengeance);
@@ -110,8 +113,8 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossIllysannaRavencrest
         {
             _EnterCombat();
             IsHeroOrMythic = IsHeroic() || IsMythicDungeon();
-            me.SetPowerType(PowerType.Energy);
             StageVengeance();
+
             me.Yell(Texts.Aggro, Language.Universal);
             instance.SetBossState(EncounterData.IllysannaRavencrest_SecondBoss, EncounterState.InProgress);
         }
@@ -138,17 +141,19 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossIllysannaRavencrest
 
             if (me.HasUnitState(UnitState.Casting))
                 return;
-            if (_events.IsInPhase(Stages.Vengeance) && me.GetPower(PowerType.Energy) == 100)
+
+            if (_events.IsInPhase(Stages.Vengeance) | me.GetPower(PowerType.Energy) == 100)
             {
                 StageFury();
             }
-            if (_events.IsInPhase(Stages.Fury) && me.GetPower(PowerType.Energy) == 0)
+            if (_events.IsInPhase(Stages.Fury) | me.GetPower(PowerType.Energy) == 0)
             {
                 StageVengeance();
             }
-            Unit target;
+
             _events.ExecuteEvents(eventIds =>
             {
+                Unit target;
                 switch (eventIds)
                 {
                     case Events.BrutalGlaive:
@@ -162,13 +167,13 @@ namespace Scripts.BrokenIsles.BlackRookHold.BossIllysannaRavencrest
 
                     case Events.DarkRush:
                         List<Unit> targetList = new List<Unit>();
-                        targetList = SelectTargetList(3, SelectAggroTarget.NonTank,50.0f, true);
+                        targetList = SelectTargetList(3, SelectAggroTarget.NonTank, 50.0f, true);
                         foreach (Unit s in targetList)
                         {
                             me.CastSpell(s, Spells.DarkRush, true);
                         }
                         me.Yell(Texts.DarkRush, Language.Universal);
-                        _events.Repeat(RandomHelper.URand(10000,20000));
+                        _events.Repeat(RandomHelper.URand(10000, 20000));
                         break;
 
                     case Events.VengefulShear:

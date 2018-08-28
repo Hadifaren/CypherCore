@@ -39,8 +39,12 @@ namespace Game.Chat
 
             if (tele == null)
             {
-                handler.SendSysMessage(CypherStrings.CommandTeleNotfound);
-                return false;
+                //tele = Global.ObjectMgr.GetGameTele(args.GetString());
+                //if (tele == null)
+                //{
+                    handler.SendSysMessage(CypherStrings.CommandTeleNotfound);
+                    return false;
+                //}
             }
 
             if (me.IsInCombat())

@@ -24,6 +24,7 @@ using Game.Network.Packets;
 using System;
 using System.Collections.Generic;
 using Framework.Collections;
+using System.Linq;
 
 namespace Game
 {
@@ -1244,7 +1245,7 @@ namespace Game
                     Global.MapMgr.DoForAllMapsWithMapId(data.mapid, map =>
                     {
                         var creatureBounds = map.GetCreatureBySpawnIdStore().LookupByKey(guid);
-                        foreach (var creature in creatureBounds)
+                        foreach (var creature in creatureBounds.ToList())
                             creature.AddObjectToRemoveList();
                     });
                 }
